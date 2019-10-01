@@ -1,0 +1,2 @@
+#include<strings.io>
+erase(hardDrive);
