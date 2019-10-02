@@ -11,8 +11,10 @@ using System.Threading;
 
 namespace MD5_Hash_Collision
 {
+
     public partial class MainForm : Form
     {
+
         Main main = new Main();
         public MainForm()
         {
@@ -36,18 +38,10 @@ namespace MD5_Hash_Collision
 
         private void StartButton_Click(object sender, EventArgs e)
         {
-            string goodEncrypted = main.Encrypt(originalFileInput.Text);
-            string evilEncrypted = main.Encrypt(evilFileInput.Text);
-            
+            animateProgressBar();
             resultBox.ForeColor = Color.White;
-            while (progressBar.Value < 100)
+            if (string.Equals(main.goodEncrypted, main.evilEncrypted))
             {
-                Thread.Sleep(10);
-                progressBar.Value += 1;
-            }
-            if (string.Equals(goodEncrypted, evilEncrypted))
-            {
-                
                 resultBox.Text = "Attack successful! They do have an indentical hash.";
                 resultBox.BackColor = Color.Green;
             }
@@ -61,6 +55,41 @@ namespace MD5_Hash_Collision
         private void ProgressBar1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        void animateProgressBar()
+        {
+            while (progressBar.Value < 100)
+            {
+                Thread.Sleep(10);
+                progressBar.Value += 1;
+            }
+        }
+
+        private void FileDialog_FileOk(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void BrowseGoodFile_Click(object sender, EventArgs e)
+        {
+            originalFileInput.Enabled = false;            
+            main.goodEncrypted = main.Encrypt(getFilePath());
+            originalFileInput.Text = fileDialog.FileName;
+        }
+
+        private void BrowseEvilFile_Click(object sender, EventArgs e)
+        {
+            evilFileInput.Enabled = false;
+            main.evilEncrypted = main.Encrypt(getFilePath());
+            evilFileInput.Text = fileDialog.FileName;
+        }
+
+        string getFilePath()
+        {
+            fileDialog = new OpenFileDialog();
+            fileDialog.ShowDialog();
+            return fileDialog.FileName;
         }
     }
 }

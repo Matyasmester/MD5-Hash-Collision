@@ -9,6 +9,8 @@ namespace MD5_Hash_Collision
 {
     class Main
     {
+        public string goodEncrypted;
+        public string evilEncrypted;
         public string Encrypt(string pathToFile)
         {
             StringBuilder sb = new StringBuilder();
@@ -23,7 +25,7 @@ namespace MD5_Hash_Collision
                 a, b, c, d
             };
 
-            string fileContent = File.ReadAllText(@pathToFile); 
+            string fileContent = File.ReadAllText(pathToFile); 
 
             byte[] inputBytes = Encoding.ASCII.GetBytes(fileContent);
             long[] numbers = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };

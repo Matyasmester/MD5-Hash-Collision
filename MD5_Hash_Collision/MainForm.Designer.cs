@@ -36,6 +36,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.resultBox = new System.Windows.Forms.RichTextBox();
             this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.fileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.browseGoodFile = new System.Windows.Forms.Button();
+            this.browseEvilFile = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // originalFileInput
@@ -68,7 +71,7 @@
             // 
             this.startButton.BackColor = System.Drawing.Color.Teal;
             this.startButton.ForeColor = System.Drawing.Color.White;
-            this.startButton.Location = new System.Drawing.Point(215, 151);
+            this.startButton.Location = new System.Drawing.Point(215, 144);
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(281, 73);
             this.startButton.TabIndex = 9;
@@ -112,11 +115,42 @@
             this.progressBar.TabIndex = 14;
             this.progressBar.Click += new System.EventHandler(this.ProgressBar1_Click);
             // 
+            // fileDialog
+            // 
+            this.fileDialog.FileName = "openFileDialog1";
+            this.fileDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.FileDialog_FileOk);
+            // 
+            // browseGoodFile
+            // 
+            this.browseGoodFile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.browseGoodFile.ForeColor = System.Drawing.Color.White;
+            this.browseGoodFile.Location = new System.Drawing.Point(40, 60);
+            this.browseGoodFile.Name = "browseGoodFile";
+            this.browseGoodFile.Size = new System.Drawing.Size(103, 23);
+            this.browseGoodFile.TabIndex = 15;
+            this.browseGoodFile.Text = "Browse good file";
+            this.browseGoodFile.UseVisualStyleBackColor = false;
+            this.browseGoodFile.Click += new System.EventHandler(this.BrowseGoodFile_Click);
+            // 
+            // browseEvilFile
+            // 
+            this.browseEvilFile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.browseEvilFile.ForeColor = System.Drawing.Color.White;
+            this.browseEvilFile.Location = new System.Drawing.Point(40, 291);
+            this.browseEvilFile.Name = "browseEvilFile";
+            this.browseEvilFile.Size = new System.Drawing.Size(103, 23);
+            this.browseEvilFile.TabIndex = 16;
+            this.browseEvilFile.Text = "Browse evil file";
+            this.browseEvilFile.UseVisualStyleBackColor = false;
+            this.browseEvilFile.Click += new System.EventHandler(this.BrowseEvilFile_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(738, 557);
+            this.Controls.Add(this.browseEvilFile);
+            this.Controls.Add(this.browseGoodFile);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.resultBox);
             this.Controls.Add(this.label1);
@@ -142,6 +176,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RichTextBox resultBox;
         private System.Windows.Forms.ProgressBar progressBar;
+        private System.Windows.Forms.OpenFileDialog fileDialog;
+        private System.Windows.Forms.Button browseGoodFile;
+        private System.Windows.Forms.Button browseEvilFile;
     }
 }
 
